@@ -1,8 +1,9 @@
-import React from 'react';
-import { Router, Link } from "@reach/router"
-import CreateContact from "./CreateContact"
+import React from 'react'
+import { Router, Link } from '@reach/router'
+import CreateContact from './CreateContact'
 import Contacts from './Contacts'
-import './App.css';
+import Edits from './EditContact'
+import './App.css'
 
 const ContactsPage = () => (
   <div>
@@ -16,15 +17,21 @@ const CreateContactsPage = () => (
   </div>
 )
 
+const EditPage = props => (
+  <div>
+    <Edits {...props} />
+  </div>
+)
+
 export default () => (
   <>
-  <nav>
-    <Link to='/'>Home</Link>{' '}
-    <Link to='/new'>New User</Link>
-  </nav>
+    <nav>
+      <Link to="/">Home</Link> <Link to="/new">New User</Link>{' '}
+    </nav>
     <Router>
       <ContactsPage path="/" />
-      <CreateContactsPage path='/new' />
+      <CreateContactsPage path="new" />
+      <Edits path="edit/:id" />
     </Router>
   </>
 )
